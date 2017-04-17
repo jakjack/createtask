@@ -21,9 +21,9 @@ public class User {
 		return outgoing;
 	}
 	
-	public void addTransaction(String type, int value, String[]tags)
+	public void addTransaction(String type, int value, String[] tags)
 	{
-		if(type == "incoming")
+		if(type == "Incoming")
 		{
 			income.add(new Transaction(value, (income.size()-1)));
 			
@@ -33,7 +33,7 @@ public class User {
 			}
 		}
 		
-		if(type == "outgoing")
+		if(type == "Outgoing")
 		{
 			outgoing.add(new Transaction(value, (outgoing.size()-1)));
 			
