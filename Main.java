@@ -79,7 +79,52 @@ public class Main{
 		
 	}
 	
-	
+	public void parse(){
+			 
+		      BufferedReader br = null;
+		      String line = "";
+		      String cvsSplitBy = ",";
+		      String nextUser= "break";
+
+		      try {
+		    	  																																																																																																																																																																																																																																																																																																																																																																																																																																	
+		          br = new BufferedReader(new FileReader("/Users/kylechristopher/Desktop/Data.csv"));
+		          while ((line = br.readLine()) != null) {
+
+		              // use comma as separator
+		        	  
+		        	  String[] listusers = line.split(cvsSplitBy);
+		        	  User person = new User();
+		        	  for(int i = 0; i < listusers.length; i++){
+		        		  //System.out.println(listusers[i]);
+		        		  if(listusers[i].equals("name")){
+		        			  person.addName(listusers[i+1], listusers[i+2]);		        			  
+		        		  }
+		        		 // if()
+		        	  //}
+		              //User user = new User("test");
+		        	  }
+		              System.out.println("User Created");
+		              person.printName();
+		              //System.out.println(listusers[1]);
+
+		          }
+
+		      } catch (FileNotFoundException e) {
+		          e.printStackTrace();
+		          //makeUser();
+		      } catch (IOException e) {
+		          e.printStackTrace();
+		      } finally {
+		          if (br != null) {
+		              try {
+		                  br.close();
+		              } catch (IOException e) {
+		                  e.printStackTrace();
+		              }
+		          }
+		      }
+		      }
 	private class ButtonListener implements ActionListener
 	{
 
