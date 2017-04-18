@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 
 public class User {
-
+String firstname;
+String lastname;
 	private ArrayList<Transaction> income = new ArrayList<Transaction>(); 
 	private ArrayList<Transaction> outgoing = new ArrayList<Transaction>();
 	private ArrayList<Asset> assets = new ArrayList<Asset>();
@@ -10,7 +11,10 @@ public class User {
 	{
 		
 	}
-	
+	public void addName(String fname, String lname){
+		firstname = fname; 
+		lastname = lname; 
+	}
 	public ArrayList<Transaction> get_income()
 	{
 		return income;
@@ -19,6 +23,9 @@ public class User {
 	public ArrayList<Transaction> get_outgoing()
 	{
 		return outgoing;
+	}
+	public void printName(){
+		System.out.print("" + firstname + " " + lastname);
 	}
 	
 	public void addTransaction(String type, int value, String[] tags)
