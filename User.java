@@ -25,12 +25,16 @@ String lastname;
 		return outgoing;
 	}
 	public void printName(){
-		System.out.print("" + firstname + " " + lastname);
+		System.out.print("" + firstname + " " + lastname+"\n");
 	}
-	
+	public void printTransactions(String type, int value, String[] tags){
+		
+			System.out.println(type+": "+value+" Tags: "+tags[0]+", "+tags[1]+", "+tags[2]);
+		
+	}
 	public void addTransaction(String type, int value, String[] tags)
 	{
-		if(type == "Incoming")
+		/*if(type.equals("Incoming"))
 		{
 			income.add(new Transaction(value, (income.size()-1)));
 			
@@ -40,7 +44,7 @@ String lastname;
 			}
 		}
 		
-		if(type == "Outgoing")
+		if(type.equals("Outgoing"))
 		{
 			outgoing.add(new Transaction(value, (outgoing.size()-1)));
 			
@@ -48,7 +52,7 @@ String lastname;
 			{
 				outgoing.get(outgoing.size()-1).addTags(tags[i]);
 			}
-		}
+		}*/
 		
 		
 	}
