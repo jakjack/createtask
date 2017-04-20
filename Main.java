@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
+import java.io.*;
 
 
 
@@ -38,11 +39,11 @@ public class Main{
 		navbar.add(transactionsnav);
 		navbar.add(quitnav);
 		
-		homenav.addActionListener(new ButtonListener() );
+		/*homenav.addActionListener(new ButtonListener() );
 		reportsnav.addActionListener(new ButtonListener() );
 		transactionsnav.addActionListener(new ButtonListener() );
-		quitnav.addActionListener(new ButtonListener() );
-		
+		quitnav.addActionListener(new ButtonListener() );*/
+		parse();
 		while(true)
 		{
 			if (appStatus == 0)
@@ -95,17 +96,45 @@ public class Main{
 		        	  
 		        	  String[] listusers = line.split(cvsSplitBy);
 		        	  User person = new User();
+		        	  
 		        	  for(int i = 0; i < listusers.length; i++){
-		        		  //System.out.println(listusers[i]);
+		        		  
 		        		  if(listusers[i].equals("name")){
-		        			  person.addName(listusers[i+1], listusers[i+2]);		        			  
+		        			  person.addName(listusers[i+1], listusers[i+2]);
+		        			  person.printName();
+		        		  }
+		        		  if(listusers[i].equals("in")){
+		        			  //must have 3 tags
+		        			  String[] tags = new String[3];
+		        			  int counter = 0; 
+		        			  for(int k = i + 2; k < i + 5; k++){
+		        				  
+		        				  tags[counter]= listusers[k];
+		        				  counter++;
+		        			  }
+		        			  int result = Integer.parseInt(listusers[i+1]);
+		        			  person.addTransaction("Incoming", result, tags);
+		        			  person.printTransactions("Incoming", result, tags);
+		        		  }
+		        		  if(listusers[i].equals("out")){
+		        			  //must have 3 tags
+		        			  String[] tags = new String[3];
+		        			  int counter = 0; 
+		        			  for(int k = i + 2; k < i + 5; k++){
+		        				  
+		        				  tags[counter]= listusers[k];
+		        				  counter++;
+		        			  }
+		        			  int result = Integer.parseInt(listusers[i+1]);
+		        			  person.addTransaction("Outgoing", result, tags);
+		        			  person.printTransactions("Outgoing", result, tags);
 		        		  }
 		        		 // if()
 		        	  //}
 		              //User user = new User("test");
 		        	  }
-		              System.out.println("User Created");
-		              person.printName();
+		              //System.out.println("User Created");
+		              //person.printName();
 		              //System.out.println(listusers[1]);
 
 		          }
@@ -125,7 +154,7 @@ public class Main{
 		          }
 		      }
 		      }
-	private class ButtonListener implements ActionListener
+	/*private class ButtonListener implements ActionListener
 	{
 
 		public void actionPerformed(ActionEvent e) {
@@ -162,8 +191,9 @@ public class Main{
 			             types, types[0]);
 				
 				String getTag = JOptionPane.showInputDialog("Please input any tags, separated by a comma");
+			}
 			
-			for (int i = 0; i < getTag.length(); i++)
+			/*for (int i = 0; i < getTag.length(); i++)
 			{
 				if( (int)charAt(i) == 44)
 				{
@@ -189,3 +219,7 @@ public class Main{
 	}
 
 }
+	}*/
+}
+		
+
