@@ -29,7 +29,7 @@ String lastname;
 	}
 	public void printTransactions(String type, int value, String[] tags){
 		
-			System.out.println(type+": "+value+" Tags: "+tags[0]+", "+tags[1]+", "+tags[2]);
+			System.out.println(type+": $"+value+" Tags: "+tags[0]+", "+tags[1]+", "+tags[2]);
 		
 	}
 	public void addTransaction(String type, int value, String[] tags)
