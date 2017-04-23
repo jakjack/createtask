@@ -4,7 +4,7 @@ public class Transaction {
 
 	 private int value;
 	 private int id;
-	 private ArrayList<String> tags;
+	 private ArrayList<String> tags = new ArrayList<String>();
 	 
 	 
 	 public Transaction(int v, int i)
@@ -15,6 +15,7 @@ public class Transaction {
 	 
 	public void addTags(String t)
 	 {
+
 		 tags.add(t);
 		 
 	 }

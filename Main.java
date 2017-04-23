@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public class Main
 {
+	User temporary = new User();
 	JFrame window = new JFrame();
 	JPanel navbar = new JPanel();
 
@@ -24,14 +25,13 @@ public class Main
 	GridLayout reports = new GridLayout(3,3);
 
 	JLabel hlabel = new JLabel("Welcome to the personal finance organizer");
-	JLabel worth = new JLabel("Current Total Net worth:" + calcWorth());
+	JLabel worth = new JLabel("Current Total Net worth: " + calcWorth());
 
 
 
 
 	int appStatus = 0;
 
-	User temporary = new User();
 
 	public static void main(String[] args) {
 		Main main = new Main();
@@ -59,7 +59,7 @@ public class Main
 		if (appStatus == 0)
 		{
 			System.out.println("Popup suceed");
-			doHomeScreen();
+			doTable();
 
 
 		}
@@ -224,7 +224,7 @@ public class Main
 			if(source.equals("Transactions Log"))
 			{
 				System.out.println("Button works 3");
-				appStatus = 2;
+				doTable();
 			}
 
 			if(source.equals("Quick Add"))
@@ -245,7 +245,8 @@ public class Main
 
 	public int calcWorth()
 	{
-		return -1;
+		return temporary.getWorth();
+		
 	}
 	public void doHomeScreen()
 	{
@@ -271,7 +272,7 @@ public class Main
 		 
 		 String rowData[][] = new String[tableSize][2];
 		 
-		String[] cnames = {"Id","Value", "Tags"};
+		String[] cnames = {"Id","Value"};
 		
 		
 		for(int i = 0; i < iDataCopy.size(); i++)
@@ -279,16 +280,30 @@ public class Main
 			rowData[i][0] = Integer.toString(iDataCopy.get(i).getId());
 			rowData[i][1] = Integer.toString(iDataCopy.get(i).getValue());
 		}
-		
+		System.out.println("I crashed after the for");
 		
 		JTable transactionsTable = new JTable(rowData, cnames);
+		System.out.println("I crashed after the table init");
 		JScrollPane transactionView = new JScrollPane(transactionsTable);
+		System.out.println("I crashed after the pane init");
 		transactionsTable.setFillsViewportHeight(true);
+		System.out.println("I crashed after the viewport bit");
 		
-		transactionsnav.add(navbar);
-		transactionsnav.add(transactionView);
-		transactionsnav.add(worth);
+		window.setLayout(transactions);
+		System.out.println("I crashed after the layout bit");
+		window.add(navbar);
+		System.out.println("I crashed after the navbar bit");
+		window.add(transactionView);
+		System.out.println("I crashed after the tranny bit");
+		window.add(worth);
+		System.out.println("I crashed after the worth bit");
+		window.pack();
+		System.out.println("I crashed after the package bit");
+		window.setVisible(true);
+		System.out.println("I crashed after the visible bit");
 		
 
 	} 
+	 
+	 
 }

@@ -9,7 +9,7 @@ public class User {
 
 	public User()
 	{
-
+		addTestData();
 	}
 	public void addName(String fname, String lname){
 		firstname = fname; 
@@ -48,15 +48,17 @@ public class User {
 	{
 		if(type.equals("Incoming"))
 		{
-			income.add(new Transaction(value, (income.size()-1)));
+			income.add(new Transaction(value, (income.size())));
 
 			if(tags != null)
 			{
 				for(int i = 0; i < tags.length; i++)
 				{
+					System.out.println(tags[i]+ " isnt null lol");
 					income.get(income.size()-1).addTags(tags[i]);
 				}
 			}
+			else return;
 		}
 
 		if(type.equals("Outgoing"))
@@ -71,6 +73,7 @@ public class User {
 					outgoing.get(outgoing.size()-1).addTags(tags[i]);
 				}
 			}
+			else return;
 		}
 
 
@@ -84,18 +87,44 @@ public class User {
 	public void addTestData()
 	{
 		String[] testTags = {"tag1", "tag2", "tag3"};
+		if(testTags != null)
+		{
+			System.out.println("The Data isnt null at the test");
+		}
 		addTransaction("Incoming", 100, testTags );
 		addTransaction("Outgoing", 200, testTags );
 		addTransaction("Incoming", 300, testTags );
 		addTransaction("Outgoing", 400, testTags );
 		addTransaction("Incoming", 500, testTags );
-		
+
 		addAsset(null, 100, null);
 		addAsset(null, 200, null);
 		addAsset(null, 300, null);
 		addAsset(null, 400, null);
-		
-		
+
+
 	}
 
+	public int getWorth()
+	{
+		int worth = 0;
+		
+		for(int i = 0; i < income.size(); i++)
+		{
+			worth += income.get(i).getValue();
+		}
+		for(int j = 0; j < outgoing.size(); j++)
+		{
+			worth -= outgoing.get(j).getValue();
+		}
+		
+		for(int k = 0; k < assets.size(); k++)
+		{
+			worth += assets.get(k).getValue();
+		}
+		
+		return worth;
+	}
 }
+
+
