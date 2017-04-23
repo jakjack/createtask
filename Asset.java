@@ -13,7 +13,7 @@ public class Asset {
 	}
 	
 	public int getValue()
-	{ 
+	{
 		return value;
 	}
 	
