@@ -280,27 +280,17 @@ public class Main
 			rowData[i][0] = Integer.toString(iDataCopy.get(i).getId());
 			rowData[i][1] = Integer.toString(iDataCopy.get(i).getValue());
 		}
+		
 		System.out.println("I crashed after the for");
-		
 		JTable transactionsTable = new JTable(rowData, cnames);
-		System.out.println("I crashed after the table init");
 		JScrollPane transactionView = new JScrollPane(transactionsTable);
-		System.out.println("I crashed after the pane init");
 		transactionsTable.setFillsViewportHeight(true);
-		System.out.println("I crashed after the viewport bit");
-		
 		window.setLayout(transactions);
-		System.out.println("I crashed after the layout bit");
 		window.add(navbar);
-		System.out.println("I crashed after the navbar bit");
 		window.add(transactionView);
-		System.out.println("I crashed after the tranny bit");
 		window.add(worth);
-		System.out.println("I crashed after the worth bit");
 		window.pack();
-		System.out.println("I crashed after the package bit");
 		window.setVisible(true);
-		System.out.println("I crashed after the visible bit");
 		
 
 	} 
