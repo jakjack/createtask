@@ -1,60 +1,49 @@
 import java.util.ArrayList;
 
 public class User {
+	// data stored within user object
 	String firstname;
 	String lastname;
 	private ArrayList<Transaction> income = new ArrayList<Transaction>(); 
 	private ArrayList<Transaction> outgoing = new ArrayList<Transaction>();
 	private ArrayList<Asset> assets = new ArrayList<Asset>();
 
+	// constructor 
 	public User()
 	{
-		addTestData();
+		
 	}
+	// mutator method for firstname and lastnames
 	public void addName(String fname, String lname){
 		firstname = fname; 
 		lastname = lname; 
 	}
+	
+	
+	// get method for private ArrayList income
 	public ArrayList<Transaction> get_income()
 	{
 		return income;
 	}
-
+	// get method for private ArrayList outgoing
 	public ArrayList<Transaction> get_outgoing()
 	{
 		return outgoing;
 	}
-	public void printName(){
-		System.out.print("" + firstname + " " + lastname+"\n");
-	}
-
-	public void printTransactions(String type, int value, String[] tags){
-
-		System.out.println(type+": $"+value+" Tags: "+tags[0]+", "+tags[1]+", "+tags[2]);
-
-	}
-
-
-	public void printAll()
-	{
-		for( int i = 0; i < income.size(); i++)
-		{
-			income.get(i).toString();
-			i++;
-		}
-	}
-
+	
+	
+	// mutator method for both private ArrayLists, adds transaction objects based on params
 	public void addTransaction(String type, int value, String[] tags)
 	{
+		// parses type, then adds the various values to the transaction object
 		if(type.equals("Incoming"))
 		{
-			income.add(new Transaction(value, (income.size())));
+			income.add(new Transaction(value, (income.size()+1)));
 
 			if(tags != null)
 			{
 				for(int i = 0; i < tags.length; i++)
 				{
-					System.out.println(tags[i]+ " isnt null lol");
 					income.get(income.size()-1).addTags(tags[i]);
 				}
 			}
@@ -63,7 +52,7 @@ public class User {
 
 		if(type.equals("Outgoing"))
 		{
-			outgoing.add(new Transaction(value, (outgoing.size()-1)));
+			outgoing.add(new Transaction(value, (outgoing.size()+1)));
 
 			if(tags != null)
 			{
@@ -78,33 +67,18 @@ public class User {
 
 
 	}
-
+	
+	// adds a new asset based off of parameters supplied 
+	
 	public void addAsset(String type, int value, String desc)
 	{
 		assets.add(new Asset(value, type, desc));
 	}
 
-	public void addTestData()
-	{
-		String[] testTags = {"tag1", "tag2", "tag3"};
-		if(testTags != null)
-		{
-			System.out.println("The Data isnt null at the test");
-		}
-		addTransaction("Incoming", 100, testTags );
-		addTransaction("Outgoing", 200, testTags );
-		addTransaction("Incoming", 300, testTags );
-		addTransaction("Outgoing", 400, testTags );
-		addTransaction("Incoming", 500, testTags );
 
-		addAsset(null, 100, null);
-		addAsset(null, 200, null);
-		addAsset(null, 300, null);
-		addAsset(null, 400, null);
-
-
-	}
-
+	
+	// calculates the given worth of the user through an algorithm
+	
 	public int getWorth()
 	{
 		int worth = 0;
@@ -122,7 +96,7 @@ public class User {
 		{
 			worth += assets.get(k).getValue();
 		}
-		
+		// returns for use in the main class
 		return worth;
 	}
 }
